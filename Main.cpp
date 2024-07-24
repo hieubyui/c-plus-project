@@ -3,22 +3,21 @@
 
 using namespace std;
 
-class Sphinx {
+class Sphinx
+{
     public:
         int guesses;
-
         string pass;
         int riddleLocation;
 
 
         Sphinx(){
             guesses = 3;
-
-
         }
+
             //method to display the guesses
             void displayGuesses(){
-                cout << "\n\nYou have ";
+                cout << "\nYou have ";
                 cout << guesses;
                 cout << " guesses left!" << endl;
             }
@@ -29,13 +28,13 @@ class Sphinx {
             }
             //method to stop and ask for user input
             void anythingToContinue(){
-                cout << "\n\nType anything to continue: ";
+                cout << "Type anything to continue: ";
                 cin >> pass;
             }
             void minusGuess(){
                 guesses -= 1;
                 if (guesses < 1){
-                    cout << "\nYou ran out of guesses! You are banished to Brazil.";
+                    cout << "\nYou ran out of guesses! You are banished to Brazil." << endl;
                     anythingToContinue();
                     exit(0);
                 }
@@ -65,10 +64,19 @@ class Sphinx {
                     cout << riddle3 << endl;
 
                 }
-
-
-
             }
+
+            void askriddle2(){
+                displayGuesses();
+                cout << riddle2 << endl;
+            }
+
+            void askriddle3(){
+                displayGuesses();
+                cout << riddle3 << endl;
+            }
+
+            
             void displayCorrect(){
                 cout << correct << endl;
             }
@@ -78,11 +86,12 @@ class Sphinx {
 
     private:
         string intro = "(A game by Hieu Ngo)\n\nYou are traveling in the deep jungles of Brazil. You pass a sphinx on the way and it asks you a question.";
-        string correct = "\nCorrect!";
-        string wrong = "\nWrong. -1 guess";
+        string correct = "Correct!";
+        string wrong = "Wrong. -1 guess";
         string riddle1 = "\nHow many bits are in a byte? ";
-        string riddle2 = "\nWhat has legs but doesn't walk? ";
-        string riddle3 = "\nName a women. ";
+        string riddle2 = "\nFinish this. 9 + 9 = ";
+        string riddle3 = "\nIn the medical drama House, a female member of House's team is named after a number, what is her name? (type her number) ";
+    
 };
 
 
@@ -90,12 +99,14 @@ class Sphinx {
 
 int main(){
     int riddleLocation;
-    int riddle1input = 0;
-    cout << riddle1input;
+    int riddle1input;
+    int riddle2input;
+    int riddle3input;
+
+
     Sphinx start;
 
     bool quit = false;
-
     start.displayIntro();
     start.anythingToContinue();
 
@@ -107,7 +118,6 @@ int main(){
         {
             case 8:
                 start.displayCorrect();
-                start.addRiddleLocation();
                 quit = true;
                 break;
             default:
@@ -117,14 +127,15 @@ int main(){
 
     }while (!quit);
 
+    quit = false;
 
     do{
-        start.askriddle();
-        cin >> riddle1input;
+        start.askriddle2();
+        cin >> riddle2input;
 
-        switch (riddle1input)
+        switch (riddle2input)
         {
-            case 8:
+            case 18:
                 start.displayCorrect();
                 quit = true;
                 break;
@@ -134,5 +145,26 @@ int main(){
         }
 
     }while (!quit);
+
+    quit = false;
+
+    do{
+        start.askriddle3();
+        cin >> riddle3input;
+
+        switch (riddle3input)
+        {
+            case 13:
+                start.displayCorrect();
+                quit = true;
+                break;
+            default:
+                start.displayWrong();
+                start.minusGuess();
+        }
+
+    }while (!quit);
+
+
 
 }

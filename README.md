@@ -5,7 +5,7 @@ I made this program to learn C++. I created a riddle game where a Sphinx asks yo
 My purpose in making this program is learning C++, and refining my skill to learn. 
 
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/0wRX8PQJfsw)
 
 # Development Environment
 
